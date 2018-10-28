@@ -19,6 +19,9 @@ const passport = require('passport');
 //instantiate express app
 const app = express();
 
+//use a port
+app.set('port', process.env.PORT || 3000);
+
 //use cookie session
 app.use(
 	CookieSession({
@@ -54,6 +57,6 @@ app.get('/', function(req, res) {
 });
 
 //listen to requests
-app.listen(port, function() {
-	console.log('app started at port: ' + port);
+app.listen(app.get('port'), function() {
+	console.log('app started at port: ' + app.get('port'));
 });
